@@ -16,3 +16,11 @@
     position:relative;
     margin-top:3em;
 }
+
+#aboutus ul li {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+em {
+    font-style:italic;
+    color:red;
+}
