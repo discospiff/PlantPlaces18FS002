@@ -2,8 +2,11 @@
 <plant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="plants.xsd">
   <genus>Hibiscus</genus>
-  <species>mutabilis</species>
   <common_name>Rose Mallow</common_name>
+  <max_height>10</max_height>
+  <begin_bloom_date>2018-03-15</begin_bloom_date>
+  <end_bloom_date>2018-04-15</end_bloom_date>
+  <edible>true</edible>
   <specimens>
     <specimen>
       <latitude>39.74</latitude>
