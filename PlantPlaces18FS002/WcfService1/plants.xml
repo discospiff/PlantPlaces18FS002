@@ -7,6 +7,8 @@
   <begin_bloom_date>2018-03-15</begin_bloom_date>
   <end_bloom_date>2018-04-15</end_bloom_date>
   <edible>true</edible>
+  <sun_tolerance>full_sun</sun_tolerance>
+  <bloom_color>red</bloom_color>
   <specimens>
     <specimen>
       <latitude>39.74</latitude>
