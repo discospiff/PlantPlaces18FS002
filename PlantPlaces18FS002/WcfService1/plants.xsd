@@ -4,9 +4,11 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element name="genus" type="xs:string"/>
-        <xs:element name="species" type="xs:string"/>
-        <xs:element name="common_name" type="xs:string"/>
-        <xs:element ref="specimens"/>
+        <xs:element name="species" type="xs:string" minOccurs="0"/>
+        <xs:element name="common_name" type="xs:string" minOccurs="0"/>
+        <xs:element name="max_height" type="xs:integer" minOccurs="0"/>
+        <xs:element name="edible" type="xs:boolean" minOccurs="0"/>
+        <xs:element ref="specimens" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -20,8 +22,8 @@
   <xs:element name="specimen">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="latitude" type="xs:string"/>
-        <xs:element name="longitude" type="xs:string"/>
+        <xs:element name="latitude" type="xs:decimal"/>
+        <xs:element name="longitude" type="xs:decimal"/>
         <xs:element name="description" type="xs:string"/>
         <xs:element name="planted_by" type="xs:string"/>
       </xs:sequence>
