@@ -17,11 +17,16 @@
       <planted_by>Brandan Jones</planted_by>
     </specimen>
     <specimen>
-      <latitude>39.48</latitude>
-      <longitude>-84.49</longitude>
+      <latitude>52.48</latitude>
+      <longitude>-0.26</longitude>
       <description>Facing Morgens hall</description>
       <planted_by>Checkers Jenkins</planted_by>
     </specimen>
-
+    <specimen>
+      <latitude>-25.36</latitude>
+      <longitude>-65.23</longitude>
+      <description>South America</description>
+      <planted_by>Guillermo Sanchez</planted_by>
+    </specimen>
   </specimens>
 </plant>

@@ -52,18 +52,33 @@
   <xs:element name="specimens">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="specimen" maxOccurs="unbounded"/>
+        <xs:element name="specimen" type="specimenType" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="specimen">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="latitude" type="xs:decimal"/>
-        <xs:element name="longitude" type="xs:decimal"/>
-        <xs:element name="description" type="xs:string"/>
-        <xs:element name="planted_by" type="xs:string"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  
+  
+  
+
+	<xs:complexType name="specimenType">
+	  <xs:sequence>
+		<xs:element name="latitude" type="xs:decimal" minOccurs="0"/>
+		<xs:element name="longitude" type="xs:decimal" minOccurs="0"/>
+		<xs:element name="description" >
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="1024"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="planted_by">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="255"/>
+				</xs:restriction> 
+			</xs:simpleType>
+		</xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+
 </xs:schema>
