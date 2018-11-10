@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="plants.xsl"?>
 <plant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="plants.xsd">
   <genus>Hibiscus</genus>
@@ -25,6 +26,12 @@
     <specimen>
       <latitude>-25.36</latitude>
       <longitude>-65.23</longitude>
+      <description>South America</description>
+      <planted_by>Guillermo Sanchez</planted_by>
+    </specimen>
+    <specimen>
+      <latitude>48.02</latitude>
+      <longitude>-3.5</longitude>
       <description>South America</description>
       <planted_by>Guillermo Sanchez</planted_by>
     </specimen>

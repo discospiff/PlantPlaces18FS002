@@ -65,6 +65,7 @@
     <Content Include="images\ic_table_chart.png" />
     <Content Include="index.html" />
     <Content Include="mobile.css" />
+    <Content Include="plants.xsl" />
     <Content Include="plants.xml" />
     <Content Include="print.css" />
     <Content Include="Service1.svc" />
