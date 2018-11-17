@@ -11,7 +11,13 @@ namespace WcfService1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                // start our XML validation.
+                String[] allowedExtensions = { ".xml" };
+                string fileName =  XMLFileUpload.FileName;
+                string fileExtension = System.IO.Path.GetExtension(fileName).ToLower();
+            }
         }
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
