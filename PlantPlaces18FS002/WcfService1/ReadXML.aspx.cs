@@ -30,7 +30,7 @@ namespace WcfService1
                     
                     // assign a value to the variable.
                     String fileName = XMLFileUpload.FileName;
-                    string fileExtension = System.IO.Path.GetExtension(fullFilePath).ToLower();
+                    string fileExtension = System.IO.Path.GetExtension(fileName).ToLower();
                     
 
                     // is this an allowed xml file?
@@ -58,7 +58,10 @@ namespace WcfService1
             if (fullFilePath != null && fullFilePath.Length > 0) { 
                 XmlDocument doc = new XmlDocument();
                 doc.Load(fullFilePath);
+                
                 ValidateXML();
+                XmlNode node = doc.SelectSingleNode("/plants/specimens/specimen[latitude>0]");
+                String data = node.ToString();
             }
         }
 
@@ -81,12 +84,18 @@ namespace WcfService1
             // read and validate the document.
             XmlReader xmlReader = XmlReader.Create(fullFilePath, settings);
 
-            // read the file one line at a time, and validate.
-            while(xmlReader.Read())
+            try
             {
+                // read the file one line at a time, and validate.
+                while (xmlReader.Read())
+                {
 
+                }
+                LblXMLValidation.Text = "Validation passed";
+            }catch (Exception e)
+            {
+                LblXMLValidation.Text = "Validation Failed.  message: " + e.Message;
             }
-            LblXMLValidation.Text = "Validation passed";
         }
 
         /// <summary>
@@ -98,6 +107,8 @@ namespace WcfService1
         {
             Console.WriteLine("Validation error: " + args.Message);
             LblXMLValidation.Text = "Validation Failed.  message: " + args.Message;
+            // something went wrong.  Let's stop working.
+            throw new Exception("Validation Failed.  message: " + args.Message);
         }
     }
 }
