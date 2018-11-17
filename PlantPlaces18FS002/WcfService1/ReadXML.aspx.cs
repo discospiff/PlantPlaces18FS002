@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using System.Xml.Schema;
 
 namespace WcfService1
 {
     public partial class ReadXML : System.Web.UI.Page
     {
         // declare the variable
-        private string fileName;
+        private string fullFilePath;
 
         /// <summary>
         /// Handle uploading XML on page load.
@@ -28,14 +29,16 @@ namespace WcfService1
                 {
                     
                     // assign a value to the variable.
-                    fileName = XMLFileUpload.FileName;
-                    string fileExtension = System.IO.Path.GetExtension(fileName).ToLower();
+                    String fileName = XMLFileUpload.FileName;
+                    string fileExtension = System.IO.Path.GetExtension(fullFilePath).ToLower();
+                    
 
                     // is this an allowed xml file?
                     if (fileExtension == allowedExtension)
                     {
                         // construct the path where I want to save the file.
                         String path = Server.MapPath("~/XML/");
+                        fullFilePath = path + fileName;
 
                         // save our XML file.
                         XMLFileUpload.PostedFile.SaveAs(path + XMLFileUpload.FileName);
@@ -52,16 +55,49 @@ namespace WcfService1
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             // is there something in this variable, AND if so, is there more than one letter in it.
-            if (fileName != null && fileName.Length > 0) { 
+            if (fullFilePath != null && fullFilePath.Length > 0) { 
                 XmlDocument doc = new XmlDocument();
-                doc.Load(fileName);
+                doc.Load(fullFilePath);
                 ValidateXML();
             }
         }
 
         public void ValidateXML()
         {
+            // settings for how we read XML.
+            XmlReaderSettings settings = new XmlReaderSettings();
+
+            // tell it how we want to validate.
+            settings.ValidationType = ValidationType.Schema;
+            settings.ValidationFlags |= 
+                System.Xml.Schema.XmlSchemaValidationFlags.ProcessSchemaLocation;
+            settings.ValidationFlags |=
+                System.Xml.Schema.XmlSchemaValidationFlags.ReportValidationWarnings;
+
+            // Wire our validator up to a method that it can call if validation fails. 
+            settings.ValidationEventHandler += 
+                new System.Xml.Schema.ValidationEventHandler(this.ValidationEventHandle);
             
+            // read and validate the document.
+            XmlReader xmlReader = XmlReader.Create(fullFilePath, settings);
+
+            // read the file one line at a time, and validate.
+            while(xmlReader.Read())
+            {
+
+            }
+            LblXMLValidation.Text = "Validation passed";
+        }
+
+        /// <summary>
+        /// This method will be invoked by the .net Framework ONLY if validation fails.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void ValidationEventHandle(object sender, ValidationEventArgs args)
+        {
+            Console.WriteLine("Validation error: " + args.Message);
+            LblXMLValidation.Text = "Validation Failed.  message: " + args.Message;
         }
     }
 }
