@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace WcfService1
 {
     public partial class ReadXML : System.Web.UI.Page
     {
+        // declare the variable
+        private string fileName;
+
         /// <summary>
         /// Handle uploading XML on page load.
         /// </summary>
@@ -22,7 +26,9 @@ namespace WcfService1
                 String allowedExtension = ".xml" ;
                 if (XMLFileUpload.HasFile)
                 {
-                    string fileName = XMLFileUpload.FileName;
+                    
+                    // assign a value to the variable.
+                    fileName = XMLFileUpload.FileName;
                     string fileExtension = System.IO.Path.GetExtension(fileName).ToLower();
 
                     // is this an allowed xml file?
@@ -45,12 +51,17 @@ namespace WcfService1
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            ValidateXML();
+            // is there something in this variable, AND if so, is there more than one letter in it.
+            if (fileName != null && fileName.Length > 0) { 
+                XmlDocument doc = new XmlDocument();
+                doc.Load(fileName);
+                ValidateXML();
+            }
         }
 
         public void ValidateXML()
         {
-            LblXMLValidation.Text = "Looking good!";
+            
         }
     }
 }
