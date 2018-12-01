@@ -74,6 +74,7 @@
     <Content Include="plants.xml" />
     <Content Include="print.css" />
     <Content Include="ReadXML.aspx" />
+    <Content Include="SearchForPlants.html" />
     <Content Include="Service1.svc" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
