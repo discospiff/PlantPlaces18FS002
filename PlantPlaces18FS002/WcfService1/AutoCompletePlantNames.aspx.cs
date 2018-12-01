@@ -12,7 +12,9 @@ namespace WcfService1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //  what has the user typed?
+            string term = Request.QueryString["term"];
+
             // throw away anything it wants to post alread
             Response.Clear();
 
@@ -29,10 +31,20 @@ namespace WcfService1
             plantNames.Add("Pin Oak");
             plantNames.Add("Swamp White Oak");
 
+            List<string> qualifiedNames = new List<string>();
 
+            foreach(string name in plantNames)
+            {
+                if (name.Contains(term))
+                {
+                    // add this name to the list of qualifying names.
+                    qualifiedNames.Add(name);
+                }
+
+            }
 
             // convert to JSON stream.
-            string plantJSON = JsonConvert.SerializeObject(plantNames);
+            string plantJSON = JsonConvert.SerializeObject(qualifiedNames);
 
             // print our JSON stream out.
             Response.Write(plantJSON);
