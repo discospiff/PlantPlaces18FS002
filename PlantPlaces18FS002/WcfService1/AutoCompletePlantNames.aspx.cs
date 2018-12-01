@@ -33,14 +33,22 @@ namespace WcfService1
 
             List<string> qualifiedNames = new List<string>();
 
-            foreach(string name in plantNames)
-            {
-                if (name.Contains(term))
-                {
-                    // add this name to the list of qualifying names.
-                    qualifiedNames.Add(name);
-                }
 
+            if (term != null && term.Length > 0)
+            {
+                foreach (string name in plantNames)
+                {
+                    if (name.Contains(term))
+                    {
+                        // add this name to the list of qualifying names.
+                        qualifiedNames.Add(name);
+                    }
+
+                }
+            } else
+            {
+                qualifiedNames = plantNames;
+                     
             }
 
             // convert to JSON stream.
