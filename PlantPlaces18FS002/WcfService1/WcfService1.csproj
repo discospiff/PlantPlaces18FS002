@@ -72,6 +72,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="CommonToLatin.asmx" />
     <Content Include="GetPlants.aspx" />
     <Content Include="images\ic_home.png" />
     <Content Include="images\ic_table_chart.png" />
@@ -102,6 +103,10 @@
     </Compile>
     <Compile Include="CicninnatiVehicle.aspx.designer.cs">
       <DependentUpon>CicninnatiVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonToLatin.asmx.cs">
+      <DependentUpon>CommonToLatin.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Connected Services\Calculator\Reference.cs">
       <AutoGen>True</AutoGen>
