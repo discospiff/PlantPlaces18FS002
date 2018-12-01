@@ -66,10 +66,17 @@
   <ItemGroup>
     <Content Include="AutoCompletePlantNames.aspx" />
     <Content Include="CicninnatiVehicle.aspx" />
+    <None Include="Connected Services\Calculator\configuration91.svcinfo" />
+    <None Include="Connected Services\Calculator\configuration.svcinfo" />
+    <None Include="Connected Services\Calculator\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="GetPlants.aspx" />
     <Content Include="images\ic_home.png" />
     <Content Include="images\ic_table_chart.png" />
     <Content Include="index.html" />
+    <Content Include="Math.aspx" />
     <Content Include="mobile.css" />
     <Content Include="plants.xsl" />
     <Content Include="plants.xml" />
@@ -96,12 +103,24 @@
     <Compile Include="CicninnatiVehicle.aspx.designer.cs">
       <DependentUpon>CicninnatiVehicle.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\Calculator\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="GetPlants.aspx.cs">
       <DependentUpon>GetPlants.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GetPlants.aspx.designer.cs">
       <DependentUpon>GetPlants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Math.aspx.cs">
+      <DependentUpon>Math.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Math.aspx.designer.cs">
+      <DependentUpon>Math.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plant.cs" />
     <Compile Include="PlantCollection.cs" />
@@ -123,6 +142,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\Calculator\calculator.wsdl" />
     <None Include="packages.config" />
     <None Include="plants.xsd">
       <SubType>Designer</SubType>
@@ -136,6 +156,12 @@
     <None Include="XML\plants.xsd">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Calculator\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
